@@ -35,26 +35,22 @@ config.js que tem o mesmo conteúdo de config.example.js abaixo descreverei como
    ```javascript
    const config = {
      cloudName: "seu_cloud_name", // <--- dentro das aspas
-     uploadPreset: "seu_upload_preset" // <--- dentro das aspas
+     uploadPreset: "seu_upload_preset", // <--- dentro das aspas
+     geminiApiKey: "sua_chave_api_gemini" // <--- dentro das aspas
    }
    ```
 
 Caso não tenha ainda seu cloudName ou uploadPreset continue no guia que irá auxilia-lo ou leia a documentação oficial da Cloudnary
 
-## ☁️ Configurando o Cloudinary
+## 🤖 Configurando o Google Gemini
 
-Para usar este projeto, você precisa configurar sua conta no Cloudinary:
+Para analisar a transcrição e encontrar o momento viral, o projeto usa a API do Google Gemini:
 
-1. **Crie uma conta** no [Cloudinary](https://cloudinary.com) se ainda não tiver.
-2. **Acesse o Dashboard** e copie o **Cloud Name** (geralmente visível na URL ou configurações).
-3. **Crie um Upload Preset**:
-   - Vá para Settings > Upload.
-   - Clique em "Add upload preset".
-   - Configure as opções desejadas (ex: permitir uploads de vídeo, ativar transcrição automática se disponível).
-   - Copie o nome do preset.
-4. **Substitua no `config.js`** os valores de `cloudName` e `uploadPreset`.
+1. **Acesse o [Google AI Studio](https://makersuite.google.com/app/apikey)**.
+2. **Crie uma nova API Key** se não tiver.
+3. **Copie a chave** e adicione no `config.js` como `geminiApiKey`.
 
-> 💡 **Dica**: Certifique-se de que o preset permite uploads de vídeo e tem permissões adequadas para geração de transcrições.
+> ⚠️ **Importante**: Mantenha sua chave segura e não a compartilhe. Ela é usada apenas localmente no navegador.
 
 ## ⚠️ Importante
 
@@ -92,8 +88,14 @@ Certifique-se de que `config.js` esteja carregado antes do script principal no H
 
 1. Abra `index.html` em um navegador.
 2. Clique no botão "Upload files" para selecionar e enviar um vídeo.
-3. Aguarde o processamento: o vídeo será enviado e a transcrição será gerada automaticamente.
-4. A transcrição aparecerá na página assim que estiver pronta.
+3. Aguarde o processamento: 
+   - O vídeo será enviado para o Cloudinary.
+   - A transcrição será gerada automaticamente (pode levar alguns segundos).
+   - A transcrição aparecerá na página.
+4. O sistema analisará a transcrição usando o Google Gemini para identificar o momento mais viral.
+5. Um clipe de 10 segundos do vídeo cortado no momento identificado será exibido na página.
+
+> 📹 **Nota**: O clipe é gerado dinamicamente via URL do Cloudinary, sem re-upload.
 
 ## 📝 Observação
 

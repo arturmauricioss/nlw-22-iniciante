@@ -2,16 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+		
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+		<script src="https://unpkg.com/lucide@latest"></script>
+
     <title>ClipMaker</title>
+
 </head>
-<body>
-	<button id="upload_widget" class="cloudinary-button">Upload files</button>
-	<div id="transcript"></div>
+<body class="bg-zinc-950 text-white min-h-screen flex items-center justify-center">
 
-<script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>  
-<script src="config.js"></script>
-<script src="app.js"></script>
+	<main class="w-full max-w-2xl p-8 text-center">
 
+		<h1 class="text-4xl font-bold mb-2">
+		ClipMaker
+		</h1>
+
+		<p class="text-zinc-400 mb-8">
+		Upload a video and automatically find the viral moment
+		</p>
+
+		<button id="upload_widget"
+		class="flex items-center gap-2 mx-auto bg-indigo-600 hover:bg-indigo-500 transition px-6 py-3 rounded-xl text-lg font-semibold shadow-lg">
+
+		<i data-lucide="upload"></i>
+		Upload Video
+
+		</button>
+
+		<div class="mt-10">
+
+			<video
+			id="clip"
+			controls
+			class="hidden w-full rounded-xl shadow-2xl">
+			</video>
+
+		</div>
+
+	</main>
+
+	<script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>  
+	<script src="config.js"></script>
+	<script src="app.js"></script>
+	<script>
+		lucide.createIcons();	
+	</script>
 </body>
 </html>
